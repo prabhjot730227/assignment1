@@ -13,7 +13,7 @@ namespace assignment1
         {
             new CountrySide().Run();
         }
-        
+
         // Create the LinkedList to reflect the Map in the PowerPoint Instructions
         Village Maeland;
         Village Helmholtz;
@@ -22,9 +22,11 @@ namespace assignment1
         Village Badden;
         Village Uster;
         Village Schvenig;
+
+       
         public void Run()
         {
-            this.TravelVillages(Alst);
+            
             Alst = new Village("Alset", false);
             Schvenig = new Village("Schving", false);
             Wessig = new Village("Wessing", true);
@@ -41,21 +43,31 @@ namespace assignment1
             //Alst.distanceToNextVillage = 19;
             Wessig.west = null;
             Wessig.east = null;
-            
+            this.TravelVillages(Alst);
 
         }
-
         public void TravelVillages(Village CurrentVillage)
         {
+            try
+            {
 
-            if (CurrentVillage.isAstrildgeHere) {
-                Console.WriteLine("Astrildge is found in{}", CurrentVillage.VillageName);
-                Console.WriteLine("***** FEELING HAPPY!****");
-                return;
-                    }
-            TravelVillages(CurrentVillage.west);
-            TravelVillages(CurrentVillage.east);
+                if (CurrentVillage.isAstrildgeHere)
+                {
+                    Console.WriteLine("Astrildge is found in{0}", CurrentVillage.VillageName);
+                    Console.WriteLine("***** FEELING HAPPY!****");
+                    return;
+                }
+                TravelVillages(CurrentVillage.west);
+                TravelVillages(CurrentVillage.east);
+            }
+            catch (NullReferenceException nre)
+            {
+                Console.WriteLine("drageon is here");
+            }
         }
+
+
+
     }
     class Village
     {
@@ -73,7 +85,6 @@ namespace assignment1
         public int distanceToWestVillage;
         public bool isAstrildgeHere;
        
-
     }
     
 }
