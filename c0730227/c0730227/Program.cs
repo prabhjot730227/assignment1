@@ -163,6 +163,7 @@ namespace c0730227
             distanceFromPreviousVillage = _prevVillageDist;
         }
 
+
         public Village west;
         public Village east;
         public string VillageName;
